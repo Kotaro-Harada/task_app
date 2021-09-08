@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag 'common','new' %>
+<h2>スケジュール詳細</h2>
+<table>
+    <tr>
+        <th>タイトル</th>
+        <td><%= @task.title %></td>
+    </tr>
+    <tr>
+        <th>開始日</th>
+        <td><%= l @task.start_day %></td>
+    </tr>
+    <tr>
+        <th>終了日</th>
+        <td><%= l @task.end_day %></td>
+    </tr>
+    <tr>
+        <th>投稿日時</th>
+        <td><%= l @task.created_at %></td>
+    </tr>
+    <tr>
+        <th>終日</th>
+        <td>
+            <% if @task.all_day == "1" %>
+                <%= @task.all_day = "○" %>
+            <% else %>
+                <%= @task.all_day = "" %>
+            <% end %>
+        </td>
+    </tr>
+    <tr>
+        <th>スケジュールメモ</th>
+        <td><%= simple_format(h(@task.memo), {align: "left"}, sanitize: false, wrapper_tag: "div") %></td>
+    </tr>
+</table>
+<p><%= link_to "スケジュール一覧に戻る", tasks_path %></p>
+<p><%= link_to "スケジュールを編集する", edit_task_path %></p>
+<p><%= link_to "スケジュールを削除", tasks_path, method: :DELETE %></p>
+

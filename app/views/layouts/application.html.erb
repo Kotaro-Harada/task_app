@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TaskApp</title>
+    <title>Schedule</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <h1>Ruby on Rails スケジュール管理アプリ</h1>
+    </header>
     <%= yield %>
+    <footer>
+      <h1 id="date"></h1> 
+      
+    </footer>
+      
+    <script>
+      today = new Date();
+      year = today.getFullYear();
+      month = today.getMonth()+1;
+      day = today.getDate();
+      date_now = document.getElementById('date');
+      date_now.innerHTML = "現在の日時：" + year + "年" + month + "月" + day + "日";
+
+      row = tbl1.rows.length - 1;
+      date_now.innerHTML += " " + "スケジュール合計：" + row;
+    </script>
   </body>
 </html>

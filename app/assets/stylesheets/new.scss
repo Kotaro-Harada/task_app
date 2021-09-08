@@ -1,0 +1,26 @@
+tr th{
+    padding: 20px;
+}
+#task_title, #task_start_day, #task_end_day{
+    width: 80%;
+    height: 30px;
+    font-size: 15px;
+}
+input[type=checkbox] {
+    transform: scale(1.5);
+    margin-top: 10px;
+}
+td{
+    padding: 10px;
+}
+td p{
+    margin: 0;
+}
+footer{
+   position: relative;
+}
+.error{
+    background-color: rgb(245, 114, 114);
+    margin: 5px 30px;
+    width: 400px;
+}

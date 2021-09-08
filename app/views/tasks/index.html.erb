@@ -1,0 +1,53 @@
+<%= stylesheet_link_tag 'common','index' %>
+<div class="wrapper">
+    <h2>スケジュール一覧</h2>
+    <div class="search">
+    <%= search_form_for @q, url: search_tasks_path do |f| %>
+        <%= f.search_field :title_cont %>
+        <%= f.submit '検索' %>
+    <% end %>
+    </div>
+        
+    <p class="notice"><%= flash[:notice] %></p>
+    <p class="alert"><%= flash[:alert] %></p>
+
+    <table>
+        <table id="tbl1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th><%= sort_link(@q, :title, "タイトル") %></th>
+                <th><%= sort_link(@q, :start_day, "開始日") %></th>
+                <th><%= sort_link(@q, :end_day, "終了日") %></th>
+                <th><%= sort_link(@q, :all_day, "終日") %></th>
+                <th>スケジュール更新日時</th>
+                <th>確認</th>
+                <th>編集</th>
+                <th>削除</th>
+            </tr>
+        </thead>
+        <% @tasks.each do |task| %>
+        <tbody>
+            <tr>
+                <td><%= task.id %></td>
+                <td><%= task.title %></td>
+                <td><%= l task.start_day, format: :short %></td>
+                <td><%= l task.end_day, format: :short %></td>
+                <td id="all_day">
+                    <% if task.all_day == "1" %>
+                        <%= "○" %>
+                    <% else %>
+                        <%= "" %>
+                    <% end %>
+                </td>
+                <td><%= l task.updated_at %></td>
+                <td><%= link_to "確認",task_path(task.id) %></td>
+                <td><%= link_to "編集",edit_task_path(task.id) %></td>
+                <td><%= link_to "削除",task,method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
+            </tr>
+        </tbody>
+        <% end %>
+    </table>
+    <p><%= link_to "スケジュール新規登録", new_task_path %></p> 
+    <div class="push"></div>
+</div>
