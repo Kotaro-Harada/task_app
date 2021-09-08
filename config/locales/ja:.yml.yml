@@ -1,0 +1,14 @@
+ja:
+  time:
+    formats:
+      default: "%Y年%-m月%-d日%-H時%M分"
+      short: "%Y年%-m月%-d日"
+  activerecord:
+    models:
+      task: タスク
+    attributes:
+      task:
+        title: タイトル
+        memo: スケジュールメモ
+        end_day: 終了日
+        start_day: 開始日
